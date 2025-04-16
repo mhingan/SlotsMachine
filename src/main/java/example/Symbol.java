@@ -3,9 +3,9 @@ package example;
 public class Symbol {
     private final char value;
     private final int weight;
-    private final int multiplier;
+    private final double multiplier;
 
-    public Symbol(char value, int weight, int multiplier) {
+    public Symbol(char value, int weight, double multiplier) {
         this.value = value;
         this.weight = weight;
         this.multiplier = multiplier;
@@ -19,7 +19,7 @@ public class Symbol {
         return weight;
     }
 
-    public int getMultiplier() {
+    public double getMultiplier() {
         return multiplier;
     }
 
