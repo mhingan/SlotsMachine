@@ -16,12 +16,12 @@ public class Board {
 
     public void generateBoard() {
         List<Symbol> symbolPool = new ArrayList<>();
-        addSymbol(symbolPool, new Symbol('A', 40, 1));
-        addSymbol(symbolPool, new Symbol('B', 30, 2));
-        addSymbol(symbolPool, new Symbol('C', 15, 3));
-        addSymbol(symbolPool, new Symbol('D', 10, 4));
-        addSymbol(symbolPool, new Symbol('7', 4, 10));
-        addSymbol(symbolPool, new Symbol('*', 1, 15));
+        addSymbol(symbolPool, new Symbol('A', 40, 1.2));
+        addSymbol(symbolPool, new Symbol('B', 30, 2.1));
+        addSymbol(symbolPool, new Symbol('C', 15, 3.3));
+        addSymbol(symbolPool, new Symbol('D', 10, 4.5));
+        addSymbol(symbolPool, new Symbol('7', 4, 10.9));
+        addSymbol(symbolPool, new Symbol('*', 1, 15.6));
 
         Random random = new Random();
         for (int i = 0; i < ROWS; i++) {
@@ -41,16 +41,28 @@ public class Board {
 
     public void checkLines(double betPerLine, User user) {
         totalWin = 0;
-        if (same(0, 0, 1, 0, 2, 0)) addWin(0, 0, betPerLine, "Coloana 1", user);
-        if (same(0, 1, 1, 1, 2, 1)) addWin(0, 1, betPerLine, "Coloana 2", user);
-        if (same(0, 2, 1, 2, 2, 2)) addWin(0, 2, betPerLine, "Coloana 3", user);
+        if (same(0, 0, 1, 0, 2, 0))
+            addWin(0, 0, betPerLine, "Coloana 1", user);
+        if (same(0, 1, 1, 1, 2, 1))
+            addWin(0, 1, betPerLine, "Coloana 2", user);
+        if (same(0, 2, 1, 2, 2, 2))
+            addWin(0, 2, betPerLine, "Coloana 3", user);
+        if (same(0, 0, 1, 1, 0, 2))
+            addWin(0, 0, betPerLine, "V win - 1", user);
+        if(same(2, 0, 1, 1, 2, 2))
+            addWin(2, 0, betPerLine, "V win - 2", user);
 
-        if (same(0, 0, 0, 1, 0, 2)) addWin(0, 0, betPerLine, "Linia 1", user);
-        if (same(1, 0, 1, 1, 1, 2)) addWin(1, 0, betPerLine, "Linia 2", user);
-        if (same(2, 0, 2, 1, 2, 2)) addWin(2, 0, betPerLine, "Linia 3", user);
+        if (same(0, 0, 0, 1, 0, 2))
+            addWin(0, 0, betPerLine, "Linia 1", user);
+        if (same(1, 0, 1, 1, 1, 2))
+            addWin(1, 0, betPerLine, "Linia 2", user);
+        if (same(2, 0, 2, 1, 2, 2))
+            addWin(2, 0, betPerLine, "Linia 3", user);
 
-        if (same(0, 0, 1, 1, 2, 2)) addWin(0, 0, betPerLine, "Diagonala principala", user);
-        if (same(0, 2, 1, 1, 2, 0)) addWin(0, 2, betPerLine, "Diagonala secundara", user);
+        if (same(0, 0, 1, 1, 2, 2))
+            addWin(0, 0, betPerLine, "Diagonala principala", user);
+        if (same(0, 2, 1, 1, 2, 0))
+            addWin(0, 2, betPerLine, "Diagonala secundara", user);
 
         if (totalWin == 0) {
             System.out.println("Nicio linie castigatoare.");
